@@ -5,8 +5,6 @@ import './css/styles.css';
 import GetConversion from './converter'
 
 function clearFields() {
-  $('#usd').val("");
-  $("select#intlCurrency").val("noSelect");
   $(".showConversion").text("");
   $('.showErrors').text("");
 }
