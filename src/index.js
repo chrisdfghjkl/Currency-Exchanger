@@ -4,6 +4,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import GetConversion from './converter'
 
+function clearFields() {
+  $('#usd').val("");
+  $("select#intlCurrency").val("noSelect");
+  $(".showConversion").text("");
+  $('.showErrors').text("");
+}
+
 function getElements(response) {
   if (response.result === "success") {
     $(".showConversion").text(`the converted amount is ${response.conversion_result}`);
@@ -23,6 +30,7 @@ $(document).ready(function() {
     event.preventDefault();
     let amount = $('#usd').val();
     let target = $("select#intlCurrency").val(); 
+    clearFields();
     makeApiCall(amount, target);
   });
 });
