@@ -11,26 +11,28 @@ function clearFields() {
 
 function getElements(response) {
   if (response.result === "success") {
-    $(".showConversion").text("the converted amount is " + `${response.conversion_result.toFixed(2)}`);
-  } else if ($("select#intlCurrency").val() === "noSelect") {
-    $('.showErrors').text("There was an error: Please select valid currency");
+    $(".showConversion").html("<p>The converted amount is <span id='resultNum'>$" + `${response.conversion_result.toFixed(2)}` + "</span></p>");
+  } else if ($("select#inputCurrency").val() === "noSelect" || $("select#outputCurrency").val() === "noSelect") {
+    $('.showErrors').html("<p>There was an error: <span id='selectError'>Please select valid currency</span><p>");
   } else {
     $('.showErrors').text(`There was an error: ${response}`);
   }
 }
 
 
-async function makeApiCall(amount, target) {
-  const response = await GetConversion.getConversion(amount, target);
+async function makeApiCall(amount, base, target) {
+  const response = await GetConversion.getConversion(amount, base, target);
   getElements(response);
 }
 
 $(document).ready(function() {
   $('#convertSubmit').click(function() {
     event.preventDefault();
-    let amount = $('#usd').val();
-    let target = $("select#intlCurrency").val(); 
+    let amount = $('#money').val();
+    let base = $("select#inputCurrency").val();
+    let target = $("select#outputCurrency").val(); 
     clearFields();
-    makeApiCall(amount, target);
+    makeApiCall(amount, base, target);
+    $(".output").show();
   });
 });
