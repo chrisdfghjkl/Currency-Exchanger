@@ -12,8 +12,6 @@ function clearFields() {
 function getElements(response) {
   if (response.result === "success") {
     $(".showConversion").html("<p>The converted amount is <span id='resultNum'>$" + `${response.conversion_result.toFixed(2)}` + "</span></p>");
-  } else if ($("select#inputCurrency").val() === "noSelect" || $("select#outputCurrency").val() === "noSelect") {
-    $('.showErrors').html("<p>There was an error: <span id='selectError'>Please select valid currency</span><p>");
   } else {
     $('.showErrors').text(`There was an error: ${response}`);
   }
