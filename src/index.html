@@ -13,14 +13,22 @@
           <div class="input-group-prepend">
             <span class="input-group-text">$</span>
           </div>
-          <input type="text" id="usd" class="form-control" placeholder="0.00">
-          <div class="input-group-append">
-            <span class="input-group-text">USD</span>
-          </div>
+          <input type="text" id="money" class="form-control" placeholder="0.00">
         </div>
         <div class="form-group">
-          <label for="intlCurrency">Select output currency:</label>
-          <select class="form-control" id="intlCurrency">
+          <label for="inputCurrency">Select input currency:</label>
+          <select class="form-control" id="inputCurrency">
+            <option value="noSelect">---</option>
+            <option value="EUR">European Euro (EUR)</option>
+            <option value="JPY">Japanese Yen (JPY)</option>
+            <option value="GBP">British Pound (GBP)</option>
+            <option value="CHF">Swiss Franc (CHF)</option>
+            <option value="CAD">Canadian Dollar (CAD)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="outputCurrency">Select output currency:</label>
+          <select class="form-control" id="outputCurrency">
             <option value="noSelect">---</option>
             <option value="EUR">European Euro (EUR)</option>
             <option value="JPY">Japanese Yen (JPY)</option>
